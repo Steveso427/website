@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<body><script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=-MKzju0QTWH4xJy1M6-3ZVP58fJICEFnVQGYdAFgexZV7aS-o1qIKGyC4PBSS23t2U9gSxOqP5sm_dXfkLQQGVatYf_u3GAElusffNUmn2f1YdB9ttVPY_aTPzSXAJcEEKgQbSmTnp9V_kqObngS3z5bXcezWkxXrDrzAFeCklr9pHc6Jyq0wZhiKy2fLnzaJOvRLXLe2Vz9riGv0GKoL6LZLjI5JZlvfkJHoW8uRvnm82mgKdjyIZO2fLt2iQrA49RLLj-PkKM4kjn8FMlulq5qWsGll-kwAfK6cCI1qRp3NhvSajpYNsmeUmjQuNJFlecRKTEhm0ullnAnlBzAYx5lTs7dCw0V22RwS0UB02aMma1X-Ekb_v48BrO9uUVPfxCj34zvQdPINtPMLhVIvRwAeOrNTuSj39oDxh4nmwVSFxLr5EjHJWA3geNzH3Sm8tpUnkCGqBrIBeXO3ruy9g" charset="UTF-8"></script>
+<label for="pin">Your have</label>
+<input type="text" id="chanceBox" name="changeBox" maxlength="4" size="4">
+<label for="pin">chance</label>
+<p id="word"></p>
+<p id="length"></p>
+<p id="questionLine"></p>
+<p id="answer"></p>
+
+<input type="text" id="textBox">
+<button onclick="myFunction()">Click me</button>
+<script>
+
+var wordArrary=["tselaitung","tselaisai"]
+var testWordNo
+var testWord
+var wordLine = []
+var wordLine2 = []
+var testWordLen
+var answer
+
+function ranWord(){
+testWordNo= Math.floor(Math.random()* wordArrary.length)
+testWord= wordArrary[testWordNo]
+testWordLen=testWord.length
+
+
+answer = ""
+for (i = 0; i < testWordLen ; i++) {
+
+wordLine[i] = "_" 
+
+}
+
+for (i = 0; i < testWordLen ; i++) {
+answer = answer + " " + wordLine[i]
+}
+
+
+//document.getElementById("word").innerHTML=testWord;
+document.getElementById("length").innerHTML="The length of the word: " + (testWordLen);
+document.getElementById("questionLine").innerHTML= answer;
+
+document.getElementById("chanceBox").value = Math.round(testWordLen/2)
+document.getElementById("chanceBox").disabled = true}
+
+
+ranWord()
+
+
+
+
+
+
+function myFunction(){
+var textWord = document.getElementById("textBox")
+var textValue= textWord.value
+var textWordLen = textValue.length
+var chanceBoxD = false
+
+
+for(i = 0; i < textWordLen ; i++){
+for (j = 0; j < testWordLen ; j++) {
+
+
+
+if (textValue[i] == testWord[j]){
+wordLine[j]=textValue[i]
+
+document.getElementById("textBox").value=""
+//alert(textValue)
+chanceBoxD = true
+
+}
+
+else{
+document.getElementById("textBox").value=""
+
+
+
+{ 
+
+
+
+}
+}
+
+
+
+
+
+}
+
+}
+if (chanceBoxD == false){
+if (document.getElementById("chanceBox").value < 1){
+alert("You Lose, answer is "+ testWord)
+ranWord()
+}
+else{
+document.getElementById("chanceBox").value= document.getElementById("chanceBox").value -1
+chanceBoxD=false}
+}
+answer =""
+var answer2 =""
+
+
+
+for (i = 0; i < testWordLen ; i++) {
+answer = answer +  " " + wordLine[i]
+answer2=answer2 + wordLine[i]
+
+}
+
+
+
+document.getElementById("questionLine").innerHTML= answer;
+if (answer2==testWord){
+
+alert("You Win! answer is " + testWord)
+ranWord()}
+}
+
+
+
+document.getElementById("textBox").onchange = function(){{myFunction()};}
+
+
+</script>
+
+</body>
+</html>
